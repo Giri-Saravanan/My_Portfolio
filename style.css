@@ -76,14 +76,48 @@ body{
     margin-top: 0px;
     margin-left: 30px;
     width: 700px;
+    animation: slideLeft 1.5s ease-in-out backwards;
+}
+@keyframes slideLeft {
+    0%{
+        opacity: 0;
+        transform: translateX(150px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+.home-content h5{
+    display: inline-block; 
+    /* margin-inline: auto; */
+    overflow: hidden;
+    color: #adefd1ff;
+    text-shadow: 0 0 5px,0 0 0px;
+    white-space: nowrap;
+    border-right: 1px solid;
+    animation: typing 3s steps(22) forwards,blink 1s step-end infinite;
+}
+@keyframes typing {
+    from{
+        width: 0;
+    }
+    to{
+        width: 30ch;
+    }
+}
+@keyframes blink {
+    50%{
+        border-color: transparent;
+    }
+
 }
 .home p{
     font-size: 20px;
 }
 .home-image{
+    animation: slideRight 1.5s ease-in-out forwards;
     display: flex;
-
-
 }
 .home-image img{
     position: relative;
@@ -92,16 +126,22 @@ body{
     margin-left: 80px;
     box-shadow: 0 0 25px #adefd1ff;
     height: 90%;
-    transition: 0.4s ease-in-out;
 }
 .home-image img:hover{
     box-shadow: 0 0 25px #adefd1ff;
     transform: scale(1.1);
+    
 }
 
-.home-content h5.roll{
-    color: #adefd1ff;
-    text-shadow: 0 0 5px,0 0 0px;
+@keyframes slideRight {
+    0%{
+        opacity: 0;
+        transform: translateX(-150px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 .btn-box{
     display: flex;
@@ -177,16 +217,61 @@ body{
 .about{
     background-color: rgb(231, 231, 231);
     color: #00203fff;
-    display: flex;
     align-items: center;
-    padding: 90px 70px;
+    padding: 0;
 }
-.about-text h2{
+.about-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.about h2{
     font-size: 50px;
-    margin-top: 0px;
     text-align: center;
-    padding: 20px;
+    padding: 3rem 20px 20px 20px;
     font-weight: 900;
+}
+.about-text a{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: #adefd1ff;
+    padding: 5px;
+    background-color: #00203fff;
+    width: 200px;
+    border-radius: 10px;
+}
+.about-text h1{
+    align-items: center;
+}
+.about-text i{
+    color: #adefd1ff;
+    font-size: 40px;
+}
+.about-text{
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    align-items: center;
+    padding: 40px;
+    animation: AutoShow;
+    animation-timeline: view();
+}
+@keyframes AutoShow {
+    0%{
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    50%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+    70%{
+        opacity: 2;
+        transform: translateY(0);
+    }
 }
 .about-text h4{
     text-align: center;
@@ -194,10 +279,17 @@ body{
 }
 .about-text p{
     font-size: 20px;
-    padding: 30px 200px;
+    padding: 10px;
     text-align: center;
+    align-items: end;
 }
-
+.about-image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: AutoShow;
+    animation-timeline: view();
+}
 
 #projects{
 padding: 3rem 3rem;
@@ -218,12 +310,25 @@ padding: 3rem 3rem;
 
 .boxs{
     background: rgb(231, 231, 231);
+    animation: SlideRight both;
+    animation-timeline: view();
+    animation-range: entry 20% cover 100vh;
     color: #00203fff;
     line-height: 1.5rem;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 15px #adefd1ff;
     transition: var(--transition);
+}
+@keyframes SlideRight {
+    from{
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .boxs:hover{
@@ -319,9 +424,11 @@ html,body{
     width: 100%;
     height: 100%;
     padding: 0;
+    scroll-behavior: smooth;
     margin: 0;
     overflow-x: hidden;
 }
+
 .menu-toggle{
     display: block;
 }
@@ -392,6 +499,10 @@ html,body{
 .about{
     width: 100%;
     padding: 0;
+}
+.about-content{
+    display: flex;
+    flex-direction: column;
 }
 .about-text{
     width: 100%;
